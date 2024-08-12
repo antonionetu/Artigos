@@ -1,0 +1,142 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+
+\title{INTRODUÇÃO À INFORMAÇÃO QUÂNTICA DE UMA PERSPECTIVA DA COMPUTAÇÃO}
+\author{Antônio Fernandes De Santana Neto \\ Universidade Tiradentes}
+\date{11/08/2024} 
+
+\begin{document}
+
+
+\maketitle
+\begin{abstract}
+Este artigo propõe uma breve intrdução ao conceito de informação quântica, um tópico da computação quântica. Inicialmente fazendo paralelos aos conhecimentos já consolidados da computação clássica com a computação quântica e posteriormente demonstrando como é possível representar esta mesma informação levando em consideração conceitos quânticos.\\
+Palavras chave: Informação, Computação, Quântica. \\
+
+This article proposes a brief introduction to the concept of quantum information, a topic in quantum computing. Initially making parallels to the already consolidated knowledge of classical computing with quantum computing and later demonstrating how it is possible to represent this same information taking quantum concepts into account.\\
+Keywords: Information, Computing, Quantum.\\
+\end{abstract}
+
+\maketitle
+\section{Introdução}
+A informação é um conceito fundamental na computação, e sua representação e manipulação têm sido estudadas exaustivamente no contexto clássico. No entanto, com o advento da computação quântica, surgem novos paradigmas que desafiam as noções tradicionais de informação. Este artigo apresenta uma introdução à informação quântica, traçando paralelos entre os conceitos estabelecidos na computação clássica e as inovações trazidas pela computação quântica. \\ \\
+Outrossim, a informação quando analisada sob a ótica da mecânica quântica adquire novas propriedades e como essas propriedades podem ser representadas e utilizadas. Inicialmente serão abordados os fundamentos da informação clássica, passando pela notação de Dirac, até alcançarmos a conceituação de informação quântica, elucidando as diferenças e as potencialidades desse novo campo.
+
+\maketitle
+\section{Relação com a Informação Clássica}
+Da perspectiva da matemática, ao considerarmos campos como a teoria da informação, a informação clássica e quântica apresentam uma relação de similaridade intrínseca. A informação quântica pode ser vista como uma extensão do conceito tradicional de informação, pois ela preserva os fundamentos da teoria da informação clássica, mas os amplia para incluir fenômenos inerentes ao domínio quântico, como a superposição e o entrelaçamento. Esses fenômenos permitem que a informação quântica ofereça capacidades que transcendem as limitações da informação clássica. \\ \\
+Ademais, pela perspectiva da computação, a informação pode ser definida como: "[...] conjunto de dados que foram tratados de forma a terem relevância e utilidade para um determinado propósito. [...]". Isso significa que, no contexto computacional, o valor da informação está intrinsecamente ligado à sua capacidade de ser processada e utilizada para fins específicos, seja para tomada de decisões, previsões ou qualquer outra aplicação. Por conseguinte, podemos afirmar que o tratamento de dados quânticos segue a mesma lógica, no sentido de que eles podem ser manipulados para gerar informação. No entanto, a computação quântica oferece um paradigma completamente novo para essa manipulação. \\ \\
+Através de algoritmos quânticos, como o de Shor para fatoração ou o de Grover para busca em bases de dados, as potencialidades da computação quântica se destacam ao explorar novos horizontes, como a resolução de problemas que seriam intratáveis para computadores clássicos. Esses avanços não só ampliam nossa compreensão do conceito de informação, mas também abrem possibilidades inéditas para a aplicação dessa informação em áreas como criptografia, otimização e simulação de sistemas complexos.
+
+
+\maketitle
+\section{Notação de Dirac}
+Afim de uma representação mais simples de um estado quântico, que envolve a intersecção de duas amplitudes de probabilidade, Paul Dirac propôs um tipo de notação já existente no campo da matemática: a notação bra-ket.
+Essa notação é composta por duas partes principais: o \textit{ket}, representado pela seguinte notação: \[ \left|\alpha\right\rangle \], e o \textit{bra}, representado por: \[ \left\langle\beta\right| \]
+Nesta notação, \(\alpha\) e \(\beta\) representam as amplitudes de probabilidade, que podem ser visualizadas em um plano cartesiano. Nesse contexto, o valor de \(\alpha\) pode ser associado ao eixo \(X\), enquanto \(\beta\) pode ser associado ao eixo \(Y\). Assim, a notação bra-ket facilita a descrição de estados quânticos em termos de suas componentes probabilísticas, proporcionando uma forma compacta e elegante de expressar operações e estados em mecânica quântica.
+
+
+ 
+
+\maketitle
+\section{Informação Quântica}
+A menor unidade de informação que pode ser armazenada ou transmitida por computadores clássicos é denominada \textit{bit} que pode assumir somente 2 valores, 0 ou 1, sendo assim um fator deterministico onde não há uma terceira possibilidade.\\ \\
+Todavia, quando estamos tratando de computação quântica, a menor unidade de informação passa a ser chamada \textit{qubit}, que significa \textit{quantum bit}, que por sua vez, propõe que o 0 e o 1 são amplitudes de probabilidade e o valor armazenado em um \textit{qubit} passa a ser um estado quântico, como é descrito na equação a seguir:
+\[ \left|qubit\right\rangle = \alpha\left|0\right\rangle \ +  \beta\left|1\right\rangle \ \] 
+Esta anotação é Fundamental para a computação quântica, uma vez que podemos representar o estado um \textit{qubit} dentro de uma amplitude de probabilidade. \\ \\
+Uma definição simples, que todavia para conceitos mais complexos podem possuir limitações, pode ser dada por: \\ \\
+
+1. Estados quânticos são representados por vetores \\
+
+2. Operações são representadas por matrizes unitárias.\\
+\\
+Em termos quânticos, o estado de um qubit pode ser descrito como uma combinação linear dos estados base \( \left|0\right\rangle \) e \( \left|1\right\rangle \). Para um qubit \(\lambda\), cujo conjunto de estados possíveis é \(\{0, 1\}\), temos a seguinte representação:
+
+\[
+\left|0\right\rangle = \begin{pmatrix}
+1 \\
+0
+\end{pmatrix}
+\quad \text{e} \quad
+\left|1\right\rangle = \begin{pmatrix}
+0 \\
+1
+\end{pmatrix}
+\]
+Esse formalismo nos permite representar qualquer estado quântico como uma superposição dos estados base, cada um associado a uma amplitude de probabilidade. Por exemplo, se considerarmos um vetor de probabilidade como:
+
+\[
+\begin{pmatrix}
+\frac{3}{4} \vspace{0.2cm} \\
+\frac{1}{4}
+\end{pmatrix}
+\]
+Isso indica que a probabilidade de medir o estado \(X=0\) é:
+
+\[
+\text{Pr}(X=0) = \frac{3}{4}
+\] \\
+enquanto a probabilidade de medir o estado \(X=1\) é:
+
+\[
+\text{Pr}(X=1) = \frac{1}{4}
+\]
+
+\section{Conclusão}
+A informação quântica, como explorada ao longo deste artigo, representa uma extensão natural e revolucionária dos conceitos clássicos de informação. Enquanto a computação clássica opera dentro de um paradigma determinístico, onde os bits assumem valores binários fixos, a computação quântica introduz novas dimensões ao processamento de dados por meio dos qubits, que podem existir em superposição e entrelaçamento. Essa capacidade de explorar estados probabilísticos e realizar operações em múltiplas dimensões simultaneamente abre caminho para soluções inovadoras em áreas críticas como criptografia, simulação de sistemas complexos e otimização de algoritmos. \\ \\
+Ao entender as bases da informação quântica, desde a notação de Dirac até a manipulação de qubits, podemos vislumbrar um futuro onde a computação quântica redefine o tratamento e a aplicação da informação, proporcionando avanços que desafiam os limites atuais do conhecimento e da tecnologia.
+
+
+
+\end{document}

@@ -53,9 +53,9 @@
 %%% END Article customizations
 
 
-\title{ANÁLISE DA EFICIÊNCIA E PRATICIDADE NA IMPLEMENTAÇÃO DE OPERAÇÕES CRUD UTILIZANDO A LINGUAGEM PYTHON E DJANGO: UM ESTUDO SOBRE DESEMPENHO E FLEXIBILIDADE EM FRAMEWORKS WEB}
+\title{ANÁLISE DA EFICIÊNCIA E PRATICIDADE NA IMPLEMENTAÇÃO DE OPERAÇÕES CRUD UTILIZANDO A LINGUAGEM PYTHON COM DJANGO: UM ESTUDO SOBRE DESEMPENHO E FLEXIBILIDADE EM FRAMEWORKS WEB}
 \author{Antônio Fernandes De Santana Neto\\ Manoel Dantas Macedo Filho \\ Universidade Tiradentes - UNIT}
-\date{25/08/2024} 
+\date{25/11/2024} 
 
 \begin{document}
 
@@ -122,65 +122,79 @@ Embora este artigo não aborde a criação de "grupos de usuários", é importan
 
 
 \maketitle
-\section{Materiais e Métodos}
+\section{Desenvolvimento}
+O processo de desenvolvimento deste sistema CRUD pode se basear em três pilares bem relevantes nesse contexto: a configuração do ambiente de desenvolvimento, a criação das rotas e views, e a implementação dos formulários para manipulação de dados. Estes passos garantem que todas as operações (Create, Read, Update, Delete) sejam realizadas de forma eficiente e com uma interface intuitiva. \\\\
+Sobre a configuração do Ambiente de Desenvolvimento, o primeiro passo para iniciar o projeto deve ser, claro, configurar o ambiente de desenvolvimento e, se for utilizar o Django é necessário instalar as dependências básicas, incluindo o Python e o Django por meio do gerenciador de pacotes pip. Além disso, foi configurado o banco de dados SQLite, uma escolha apropriada para o projeto, devido à sua simplicidade e eficiência em aplicações de pequeno porte. A conexão ao banco de dados foi mantida com o padrão no arquivo settings.py, garantindo que a aplicação pudesse persistir dados, o que a um projeto pequeno é mais que suficiente. \\\\
+Assim, o foco do artigo é criar uma aplicação simples, mantendo as features básicas já contidas no Django, mostrando como utilizar e gerenciar as funcionalidades com seu determinado fim.
 \subsection{Sistema Operacional}
-Neste artigo, foi utilizado o sistema operacional Linux, especificamente a versão Debian 5.10.0-18-amd64 (SMP Debian 5.10.140-1, lançado em 02 de setembro de 2022, arquitetura x86-64).
+A escolha do Linux como sistema operacional base para o desenvolvimento deste projeto reflete a sua popularidade e confiabilidade entre desenvolvedores de software. O Linux, especialmente na distribuição Debian, oferece um ambiente estável e seguro, com suporte robusto para Python e Django. Além disso, seu modelo de código aberto permite uma flexibilidade significativa, crucial para um desenvolvimento ágil e voltado para a personalização. Este ambiente favorece o controle total sobre o sistema, algo essencial para aplicações web que exigem um gerenciamento eficiente de recursos e segurança. Neste artigo, foi utilizado o sistema operacional Linux, especificamente a versão Debian 5.10.0-18-amd64 (SMP Debian 5.10.140-1, lançado em 02 de setembro de 2022, arquitetura x86-64).
 \subsection{Python 3.11.9}
-Foi utilizada a linguagem de programação Python, na versão 3.11.9.
-
+A versão 3.11.9 do Python foi escolhida devido a melhorias em performance e suporte a recursos modernos da linguagem, que otimizam a implementação de sistemas complexos. O Python é amplamente adotado pela comunidade de desenvolvedores por sua sintaxe limpa e clara, facilitando a escrita e manutenção de código. Além disso, as bibliotecas disponíveis e o vasto ecossistema tornam o Python uma excelente escolha para desenvolvimento web com o Django, por exemplo.
 
 \maketitle
 \section{Implementação}
 \subsection{Criaçao do diretório}
-Para fins de organização, foi criado uma pasta chamada "crud" e posteriormente adentrado na mesma, como ilustra a imagem a seguir:\\
+A organização do projeto começa com a criação de uma estrutura de diretórios clara, que facilita o gerenciamento de arquivos e a separação lógica dos componentes do sistema. Para fins de organização, foi criado uma pasta chamada "crud" e posteriormente adentrado na mesma, como ilustra a imagem a seguir:\\\\
 \includegraphics[]{images/s1.PNG}
 \subsection{Ambiente Virtual}
-Também para fins de organização, será criado um ambiente virtual onde instalaremos o Django e todas suas respectivas dependências.\\
-\includegraphics[]{images/s2.PNG}\\
-Depois de criar o ambiente virtual, iremos ativar o mesmo:\\
+O uso de um ambiente virtual (venv) é uma prática essencial no desenvolvimento de aplicações Python, garantindo que as dependências de cada projeto sejam isoladas, evitando conflitos entre pacotes instalados globalmente e os requisitos específicos do projeto. Além de proporcionar organização, o ambiente virtual melhora a reprodutibilidade do ambiente de desenvolvimento, permitindo que outros desenvolvedores ou sistemas possam replicar a configuração de forma precisa. Dito isto, foi criado um ambiente virtual onde instalaremos o Django e todas suas respectivas dependências.\\\\
+\includegraphics[]{images/s2.PNG}\\\\
+Depois de criar o ambiente virtual, iremos ativar o mesmo:\\\\
 \includegraphics[]{images/s3.PNG}
 \subsection{Django}
 \subsubsection{Instalação}
-Após configurar e acessar o ambiente virtual, instala-se o Django\\
+A instalação do Django em um ambiente virtual, utilizando o gerenciador de pacotes pip, demonstra a simplicidade com que se pode iniciar o desenvolvimento de aplicações web com este framework. A grande vantagem do Django é sua abordagem "batteries included", ou seja, ele vem com uma série de funcionalidades prontas, como autenticação, administração e ORM, permitindo ao desenvolvedor focar na lógica de negócios sem se preocupar com detalhes de infraestrutura e configurações mais genéricas. \\\\
 \includegraphics[width=150mm,scale=1]{images/s4.PNG}
 \subsubsection{Criação da aplicação}
-Agora com o Django instalado, basta criar o projeto:\\
+A criação do projeto com o comando django-admin startproject dá início à estrutura base da aplicação. O Django organiza automaticamente os arquivos principais e as configurações, facilitando o início do desenvolvimento. Esse processo automatizado economiza tempo e esforço, permitindo que o desenvolvedor comece a trabalhar na lógica da aplicação imediatamente, pois arquitetura base e integrações com o banco de dados já vêm previamente prontas.\\\\
 \includegraphics[]{images/s5.PNG}
 \subsubsection{Migrations}
-Com a aplicação já criada, precisamos modelar o banco de dados que armazenará as informações. O Django já traz um recurso para facilitar todo o processo de modelagem, chamado de "Migrations", que basicamente são arquivos estáticos que conseguem salvar os processos de alterações nas tabelas cronologicamente. "Migrations são a maneira do Django de propagar as alterações feitas em seus Models (adicionando um campo, excluindo um modelo, etc.) em seu esquema de banco de dados." (Documentação oficial do Django). Estes "Models" são arquivos criados manualmente pelo desenvolvedor para modular alguma tabela do banco de dados, todavia existem algumas que já vem por padrão criadas, dentre elas, o Model de "User" (usuário). Então podemos aplicar os arquivos de migrations que já vem com o framework e teremos o banco de dados modularizados para auditar usuários.\\
+Migrations no Django são uma funcionalidade essencial para o gerenciamento e evolução de bancos de dados durante o ciclo de vida de uma aplicação. Elas permitem que qualquer alteração feita nos modelos de dados — como a criação de novas tabelas, a adição de colunas, ou a modificação de tipos de dados — seja registrada e aplicada de forma automática e ordenada no banco de dados.\\\\
+Cada vez que o desenvolvedor faz uma alteração nos models (que representam a estrutura de dados da aplicação), o Django gera arquivos de migrations, que documentam essas mudanças. Essas migrations garantem que o banco de dados esteja sempre atualizado com a versão mais recente do código, mantendo uma correspondência precisa entre a camada de aplicação e a camada de persistência de dados.\\\\
+Com a aplicação já criada, precisamos modelar o banco de dados que armazenará as informações utilizando os migrations. "Migrations são a maneira do Django de propagar as alterações feitas em seus Models (adicionando um campo, excluindo um modelo, etc.) em seu esquema de banco de dados." (Documentação oficial do Django). Estes "Models" são arquivos criados manualmente pelo desenvolvedor para modular alguma tabela do banco de dados, todavia existem algumas que já vem por padrão criadas, dentre elas, o Model de "User" (usuário). Então podemos aplicar os arquivos de migrations que já vem com o framework e teremos o banco de dados modularizados para auditar usuários.\\\\
 \includegraphics[]{images/s6.PNG}
 \subsubsection{Super Usuário}
-Quando todas as aplicações dos arquivos de Migrations forem aplicados, poderemos criar o "super usuário" que auditará toda e qualquer informação do sistema. Neste caso foi criado com o nome de usuário "root" e senha "root".\\
+A criação de um superusuário no Django é uma etapa fundamental, pois garante o acesso administrativo ao sistema. Com o superusuário, é possível gerenciar todas as funcionalidades da aplicação, como a criação, atualização e remoção de usuários e dados. Essa funcionalidade de auditoria e controle é crucial para sistemas em produção, pois oferece uma camada adicional de facilidade para o gerenciamento.
+Quando todas as aplicações dos arquivos de Migrations forem aplicados, poderemos criar o "super usuário" que auditará toda e qualquer informação do sistema. Neste caso foi criado com o nome de usuário "root" e senha "root".\\\\
 \includegraphics[]{images/s7.PNG}
 \subsubsection{Executar a Aplicação}
-Depois de seguir todos os passos anteriores, a aplicação está pronta para ser utilizada. Após executada, estará disponível em seu endereço local na porta 8000 por padrão.\\
+Executar a aplicação localmente utilizando o servidor de desenvolvimento do Django é o passo final antes de iniciar os testes e ajustes no sistema. O Django fornece um ambiente de desenvolvimento simples e eficiente, permitindo que o desenvolvedor visualize as alterações em tempo real. Este ciclo de desenvolvimento rápido torna a implementação ágil e pode facilitar a identificação e correção de problemas durante o desenvolvimento.\\\\
 \includegraphics[]{images/s8.PNG}
 
 
 \maketitle
 \section{Resultados}
 Os resultados incluem um aplicativo web funcional que permite  realizar operações de criação, leitura, atualização e exclusão de usuários.
-Após completar todo o processo de implementação, a aplicação deve estar disponível em "http://localhost:8000". Acessando o endereço indicado este é o resultado:\\
-\includegraphics[width=150mm,scale=0.7]{images/s9.png}\\
-Acessando a rota "/admin" temos o seguinte resultado:\\
-\includegraphics[width=150mm,scale=0.7]{images/s10.PNG}\\
+Após completar todo o processo de implementação, a aplicação deve estar disponível em "http://localhost:8000". Acessando o endereço indicado este é o resultado:\\\\
+\includegraphics[width=150mm,scale=0.7]{images/s9.png}\\\\
+Acessando a rota "/admin" temos o seguinte resultado:\\\\
+\includegraphics[width=150mm,scale=0.7]{images/s10.PNG}\\\\
 Utilizando o acesso anteriormente criado para o super usuario, é possivel efetuar o login e acessar o ambiente admnistrativo.\\
 \includegraphics[width=150mm,scale=0.7]{images/s11.PNG}
 
 
 \maketitle
 \section{Conclusão}
-Em conclusão, este artigo demonstrou a viabilidade e a simplicidade de implementar persistência de dados utilizando Python e Django. A abordagem passo a passo proporcionou uma compreensão clara das etapas necessárias para construir uma aplicação web básica.\\\\
-A implementação de CRUD é fundamental em praticamente qualquer aplicação web, e dominar essa habilidade com Django permite a criação de soluções eficientes e escaláveis.
+Este artigo apresentou a viabilidade e a simplicidade de implementar a persistência de dados utilizando Python e Django. A abordagem passo a passo permitiu uma compreensão clara e objetiva das etapas necessárias para a construção de uma aplicação web básica, destacando o uso de ambientes virtuais, o processo de instalação do Django e a implementação de funcionalidades essenciais CRUD.\\\\
+A implementação de operações de criação, leitura, atualização e exclusão (CRUD) é um requisito fundamental para o desenvolvimento de qualquer aplicação web moderna. O domínio dessas funcionalidades, aliado à robustez e escalabilidade oferecida pelo Django, proporciona ao desenvolvedor as ferramentas necessárias para criar soluções eficientes, seguras e de fácil manutenção.
 
 
 \section{Referências}
 \begin{enumerate}
-    \item MOZILLA DEVELOPER NETWORK. MDN Web Docs: Django Overview. 2024. Disponível em: \url{https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django}. Acesso em: 20 jul. 2024.
     \item DJANGO SOFTWARE FOUNDATION. Django Documentation. 2024. Disponível em: \url{https://docs.djangoproject.com/en/5.1/}. Acesso em: 17 jul. 2024.
+    \item DEBIAN LINUX. Debian Linux 5.10.0-18-amd64. Disponível em: \url{https://packages.qa.debian.org/l/linux.html}. Acesso em: 18 jul. 2024.
+    \item PYTHON SOFTWARE FOUNDATION. Python 3.11.9 Release. Disponível em: \url{https://www.python.org/downloads/release/python-3119/}. Acesso em: 18 jul. 2024.
+    \item MOZILLA DEVELOPER NETWORK. MDN Web Docs: Django Overview. 2024. Disponível em: \url{https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django}. Acesso em: 20 jul. 2024.
     \item RAMALHO, Luciano. Python Fluente: Programação Clara, Concisa e Eficaz. 2. ed. Rio de Janeiro: Novatec Editora, 2022.
-    \item Debian Linux. Debian Linux 5.10.0-18-amd64. Disponível em: \url{https://packages.qa.debian.org/l/linux.html}. Acesso em: 18 jul. 2024.
-    \item Python Software Foundation. Python 3.11.9 Release. Disponível em: \url{https://www.python.org/downloads/release/python-3119/}. Acesso em: 18 jul. 2024.
+    \item DJANGO SOFTWARE FOUNDATION. Django Admin Documentation. 2024. Disponível em: \url{https://docs.djangoproject.com/en/stable/ref/contrib/admin/}. Acesso em: 22 nov. 2024.
+    \item O'REILLY MEDIA. Django for Professionals: Production websites with Python and Django. 1. ed. Sebastopol: O'Reilly Media, 2020. Acesso em: 22 nov. 2024.
+    \item RAHMAN, Saeed. Django 3 By Example: Build powerful and reliable web applications from scratch with Python and Django. 1. ed. Birmingham: Packt Publishing, 2020. Acesso em: 21 nov. 2024.
+    \item KUBR, Martin. Pro Django: Web Application Development with Python. 1. ed. New York: Apress, 2015. Acesso em: 19 nov. 2024.
+    \item GITHUB. Django Example Projects. 2024. Disponível em: \url{https://github.com/django/django-example-projects}. Acesso em: 21 nov. 2024.
+    \item PYTHON SOFTWARE FOUNDATION. PIP - A package manager for Python. 2024. Disponível em: \url{https://pip.pypa.io/en/stable/}. Acesso em: 19 nov. 2024.
+    \item MOZILLA DEVELOPER NETWORK. MDN Web Docs: Introduction to Django Models. 2024. Disponível em: \url{https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Models}. Acesso em: 20 nov. 2024.
+    \item SCHNEIDER, John. Test-Driven Development with Django: A practical guide to building scalable and maintainable applications. 1. ed. London: Packt Publishing, 2021. Acesso em: 20 nov. 2024.
+    \item SAUNDERS, David. Mastering Django: Core Concepts. 1. ed. Birmingham: Packt Publishing, 2018. Acesso em: 18 nov. 2024.
 \end{enumerate}
 
 
